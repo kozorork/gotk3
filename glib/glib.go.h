@@ -162,7 +162,7 @@ static inline guint _g_signal_new(const gchar *name) {
 
 static inline guint _g_signal_newv(const gchar *name, const GType return_type,
                                    const guint n_params, GType *const param_types) {
-  return g_signal_newv(name, G_TYPE_OBJECT, G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
+  return g_signal_newv(name, G_TYPE_OBJECT, G_SIGNAL_ACTION,
                        NULL, NULL, NULL, g_cclosure_marshal_VOID__POINTER,
                        return_type, n_params, param_types);
 }

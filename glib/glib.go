@@ -1370,23 +1370,39 @@ func SignalNew(signalName string) (*Signal, error) {
 //   - paramsTypes...      : Datatypes of the parameters (amount of elements must match nParams, except when nParams is 0).
 //                           If nParams is 0 then paramsTypes has to be TYPE_NONE.
 //                           If nParams is 1 then paramsTypes has to be different from TYPE_NONE.
+//                           The elements of paramsTypes have to be different from TYPE_NONE.
 func SignalNewV(
 	signalName string,
 	returnType Type,
 	nParams uint,
 	paramsTypes ...Type,
 ) (*Signal, error) {
-	if nParams == 0 {
+	switch nParams {
+	case 0:
 		if paramsTypes[0] != TYPE_NONE || len(paramsTypes) != 1 {
-			return nil, fmt.Errorf("invalid Types: the amount of parameters is %d, paramsTypes must be TYPE_NONE", nParams)
+			return nil, fmt.Errorf(
+				"invalid Types: the amount of parameters is %d, paramsTypes must be TYPE_NONE",
+				nParams,
+			)
 		}
-	} else if nParams == 1 {
+	case 1:
 		if paramsTypes[0] == TYPE_NONE || len(paramsTypes) != 1 {
-			return nil, fmt.Errorf("invalid Types: the amount of parameters is %d, paramsTypes must be different from TYPE_NONE", nParams)
+			return nil, fmt.Errorf(
+				"invalid Types: the amount of parameters is %d, paramsTypes must be different from TYPE_NONE",
+				nParams,
+			)
 		}
-	} else {
+	default:
 		if len(paramsTypes) != int(nParams) {
-			return nil, fmt.Errorf("invalid Types: The amount of elements of paramsTypes has to be equal to %d", nParams)
+			return nil, fmt.Errorf(
+				"invalid Types: The amount of elements of paramsTypes has to be equal to %d",
+				nParams,
+			)
+		}
+		for _, paramType := range paramsTypes {
+			if paramType == TYPE_NONE {
+				return nil, fmt.Errorf("invalid Types: The elements of paramsTypes have to be different from TYPE_NONE")
+			}
 		}
 	}
 
@@ -1395,10 +1411,10 @@ func SignalNewV(
 
 	var sliceOfGTypes []C.GType
 	for _, paramType := range paramsTypes {
-		sliceOfGTypes = append(sliceOfGTypes, C.gsize(paramType))
+		sliceOfGTypes = append(sliceOfGTypes, C.GType(paramType))
 	}
 
-	signalId := C._g_signal_newv((*C.gchar)(cstr), C.gsize(returnType), C.guint(nParams), (*C.GType)(&sliceOfGTypes[0]))
+	signalId := C._g_signal_newv((*C.gchar)(cstr), C.GType(returnType), C.guint(nParams), &sliceOfGTypes[0])
 
 	if signalId == 0 {
 		return nil, fmt.Errorf("invalid signal name: %s", signalName)
