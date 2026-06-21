@@ -314,7 +314,7 @@ func ucharString(guchar *C.guchar) string {
 // nextgcharptr increments gcharptr by 1. Hopefully, this could be inlined by
 // the Go compiler.
 func nextgcharptr(gcharptr **C.gchar) **C.gchar {
-	return (**C.gchar)(unsafe.Pointer(uintptr(unsafe.Pointer(gcharptr)) + 1))
+	return (**C.gchar)(unsafe.Pointer(uintptr(unsafe.Pointer(gcharptr)) + unsafe.Sizeof(*gcharptr)))
 }
 
 func goString(cstr *C.gchar) string {
