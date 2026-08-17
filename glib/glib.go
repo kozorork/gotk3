@@ -39,7 +39,7 @@ import (
 
 // Go guarantees package-level variables are initialized BEFORE 
 // any init() functions in the package run.
-var _ = C.init_glib_type_system()
+var _ = C.initGlibTypeSystem()
 
 /* this function must be called if building with glib < 2.36! */
 func InitTypeSystem() {
