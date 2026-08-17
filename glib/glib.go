@@ -33,8 +33,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/internal/callback"
-	"github.com/gotk3/gotk3/internal/closure"
+	"github.com/kozorork/gotk3/internal/callback"
+	"github.com/kozorork/gotk3/internal/closure"
 )
 
 /*
