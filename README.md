@@ -20,6 +20,9 @@ on a system with Cairo 1.10.2
 - to compile an application for Windows XP, you need the following build tags:
   `gtk_3_6 glib_2_34 cairo_1_10 pango_1_36 gdk_pixbuf_2_26`
 
+  You will probably need a bundle for this. You can get it
+  [here](https://web.archive.org/web/20180228011133/http://win32builder.gnome.org/gtk+-bundle_3.6.4-20130921_win32.zip)
+
 - When using the `glib_2_34` build tag, the GLib package must be initialized
   before any initialization code in the other gotk3 packages that uses the
   GObject type system. Prior to GLib 2.36, `g_type_init()` had to be called
