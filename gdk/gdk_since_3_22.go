@@ -78,6 +78,13 @@ func marshalSubpixelLayout(p uintptr) (interface{}, error) {
 }
 
 /*
+ * GdkEvent
+ */
+func (v *Event) ScanCode() int {
+    return int(C.gdk_event_get_scancode(v.native()))
+}
+
+/*
  * GdkDisplay
  */
 

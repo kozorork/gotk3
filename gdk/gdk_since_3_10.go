@@ -18,6 +18,21 @@ import (
 // TODO:
 // gdk_device_get_position_double().
 
+const (
+	WINDOW_STATE_TILED      WindowState = C.GDK_WINDOW_STATE_TILED
+)
+
+const (
+	KEY_AudioMicMute                = uint(C.GDK_KEY_AudioMicMute)
+)
+
+// SetAllowedBackends is a wrapper around gdk_set_allowed_backends
+func SetAllowedBackends(backends string) {
+	cstr := C.CString(backends)
+	defer C.free(unsafe.Pointer(cstr))
+	C.gdk_set_allowed_backends((*C.gchar)(cstr))
+}
+
 // GetScaleFactor is a wrapper around gdk_window_get_scale_factor().
 func (v *Window) GetScaleFactor() int {
 	return int(C.gdk_window_get_scale_factor(v.native()))
