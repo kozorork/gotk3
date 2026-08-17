@@ -31,6 +31,13 @@
 #include <glib/gi18n.h>
 #include <locale.h>
 
+/* glib <2.36 requires calling this function */
+static void initGlibTypeSystem() {
+#if !GLIB_CHECK_VERSION(2, 36, 0)
+    g_type_init();
+#endif
+}
+
 /* GObject Type Casting */
 static GObject *toGObject(void *p) { return (G_OBJECT(p)); }
 

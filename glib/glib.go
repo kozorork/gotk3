@@ -37,6 +37,11 @@ import (
 	"github.com/kozorork/gotk3/internal/closure"
 )
 
+/* this function must be called if building with glib < 2.36! */
+func InitTypeSystem() {
+    C.initGlibTypeSystem()
+}
+
 /*
  * Type conversions
  */
