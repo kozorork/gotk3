@@ -37,9 +37,13 @@ import (
 	"github.com/kozorork/gotk3/internal/closure"
 )
 
+// Go guarantees package-level variables are initialized BEFORE 
+// any init() functions in the package run.
+var _ = C.init_glib_type_system()
+
 /* this function must be called if building with glib < 2.36! */
 func InitTypeSystem() {
-    C.initGlibTypeSystem()
+    //C.initGlibTypeSystem()
 }
 
 /*
