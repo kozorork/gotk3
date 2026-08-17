@@ -927,3 +927,18 @@ func (v *FileChooser) GetCurrentName() string {
 	defer C.free(unsafe.Pointer(c))
 	return goString(c)
 }
+
+/*
+ * GtkInfoBar
+ */
+
+// GetShowCloseButton is a wrapper around gtk_info_bar_get_show_close_button().
+func (v *InfoBar) GetShowCloseButton() bool {
+	b := C.gtk_info_bar_get_show_close_button(v.native())
+	return gobool(b)
+}
+
+// SetShowCloseButton is a wrapper around gtk_info_bar_set_show_close_button().
+func (v *InfoBar) SetShowCloseButton(setting bool) {
+	C.gtk_info_bar_set_show_close_button(v.native(), gbool(setting))
+}

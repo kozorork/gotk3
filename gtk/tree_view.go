@@ -192,16 +192,6 @@ func (v *TreeView) SetHeadersClickable(show bool) {
 	C.gtk_tree_view_set_headers_clickable(v.native(), gbool(show))
 }
 
-// GetActivateOnSingleClick is a wrapper around gtk_tree_view_get_activate_on_single_click().
-func (v *TreeView) GetActivateOnSingleClick() bool {
-	return gobool(C.gtk_tree_view_get_activate_on_single_click(v.native()))
-}
-
-// SetActivateOnSingleClick is a wrapper around gtk_tree_view_set_activate_on_single_click().
-func (v *TreeView) SetActivateOnSingleClick(show bool) {
-	C.gtk_tree_view_set_activate_on_single_click(v.native(), gbool(show))
-}
-
 // RemoveColumn is a wrapper around gtk_tree_view_remove_column().
 func (v *TreeView) RemoveColumn(column *TreeViewColumn) int {
 	return int(C.gtk_tree_view_remove_column(v.native(), column.native()))

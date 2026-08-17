@@ -132,3 +132,16 @@ func (v *ListBoxRow) GetSelectable() bool {
 // TODO:
 // gtk_switch_set_state().
 // gtk_switch_get_state().
+
+/*
+ * GtkIconTheme
+ */
+
+// AddResourcePath is a wrapper around gtk_icon_theme_add_resource_path().
+func (v *IconTheme) AddResourcePath(path string) {
+	cstr := C.CString(path)
+	defer C.free(unsafe.Pointer(cstr))
+
+	C.gtk_icon_theme_add_resource_path(v.Theme, (*C.gchar)(cstr))
+}
+

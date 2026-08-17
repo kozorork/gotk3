@@ -285,16 +285,6 @@ func (v *IconView) GetItemPadding() int {
 	return int(C.gtk_icon_view_get_item_padding(v.native()))
 }
 
-// SetActivateOnSingleClick is a wrapper around gtk_icon_view_set_activate_on_single_click().
-func (v *IconView) SetActivateOnSingleClick(single bool) {
-	C.gtk_icon_view_set_activate_on_single_click(v.native(), gbool(single))
-}
-
-// GetActivateOnSingleClick is a wrapper around gtk_icon_view_get_activate_on_single_click().
-func (v *IconView) GetActivateOnSingleClick() bool {
-	return gobool(C.gtk_icon_view_get_activate_on_single_click(v.native()))
-}
-
 // GetCellRect is a wrapper around gtk_icon_view_get_cell_rect().
 func (v *IconView) GetCellRect(path *TreePath, cell *CellRenderer) *gdk.Rectangle {
 	var crect C.GdkRectangle
