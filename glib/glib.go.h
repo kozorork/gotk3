@@ -48,17 +48,11 @@ static GSimpleActionGroup *toGSimpleActionGroup(void *p) {
   return (G_SIMPLE_ACTION_GROUP(p));
 }
 
-static GPropertyAction *toGPropertyAction(void *p) {
-  return (G_PROPERTY_ACTION(p));
-}
-
 static GMenuModel *toGMenuModel(void *p) { return (G_MENU_MODEL(p)); }
 
 static GMenu *toGMenu(void *p) { return (G_MENU(p)); }
 
 static GMenuItem *toGMenuItem(void *p) { return (G_MENU_ITEM(p)); }
-
-static GNotification *toGNotification(void *p) { return (G_NOTIFICATION(p)); }
 
 static GPermission *toGPermission(void *p) { return (G_PERMISSION(p)); }
 
