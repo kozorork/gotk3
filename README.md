@@ -23,6 +23,8 @@ on a system with Cairo 1.10.2
   You will probably need a bundle for this. You can get it
   [here](https://web.archive.org/web/20180228011133/http://win32builder.gnome.org/gtk+-bundle_3.6.4-20130921_win32.zip)
 
+  The SHA256 hash of this bundle is: `1c1a6019746ae58c6a112e59c6b50463b838900d2244c494d94dea8ebea0f715`
+
 - When using the `glib_2_34` build tag, the GLib package must be initialized
   before any initialization code in the other gotk3 packages that uses the
   GObject type system. Prior to GLib 2.36, `g_type_init()` had to be called
