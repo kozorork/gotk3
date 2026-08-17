@@ -11,3 +11,8 @@ static GPropertyAction *toGPropertyAction(void *p) {
 
 static GNotification *toGNotification(void *p) { return (G_NOTIFICATION(p)); }
 
+/*
+ * GVariantDict
+ */
+static GVariantDict *toGVariantDict(void *p) { return (GVariantDict *)p; }
+
